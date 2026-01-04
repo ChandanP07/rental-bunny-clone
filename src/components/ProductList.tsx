@@ -22,6 +22,23 @@ const products = [
   { name: 'Edit Suite', image: editSuiteImg },
 ];
 
+const ProductCard = ({ product }: { product: { name: string; image: string } }) => {
+  return (
+    <article className="flex-shrink-0 w-44 text-center cursor-pointer">
+      <div className="bg-white rounded-2xl p-6 mb-4 shadow-sm hover:shadow-lg transition-shadow duration-300">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-32 object-contain hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+      <h3 className="font-semibold text-secondary hover:text-coral transition-colors">
+        {product.name}
+      </h3>
+    </article>
+  );
+};
+
 const ProductList = () => {
   return (
     <section className="py-16 bg-light-gray">
@@ -33,44 +50,14 @@ const ProductList = () => {
           The latest. Take a look at what's new right now.
         </p>
 
-        {/* Marquee Container */}
+        {/* Product Grid */}
         <div className="overflow-hidden">
           <div className="flex gap-8 marquee">
-            {/* First set of products */}
             {products.map((product, index) => (
-              <div
-                key={`first-${index}`}
-                className="flex-shrink-0 w-40 text-center group cursor-pointer"
-              >
-                <div className="bg-white rounded-2xl p-6 mb-4 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-32 object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="font-semibold text-secondary group-hover:text-coral transition-colors">
-                  {product.name}
-                </h3>
-              </div>
+              <ProductCard key={`first-${index}`} product={product} />
             ))}
-            {/* Duplicate for seamless loop */}
             {products.map((product, index) => (
-              <div
-                key={`second-${index}`}
-                className="flex-shrink-0 w-40 text-center group cursor-pointer"
-              >
-                <div className="bg-white rounded-2xl p-6 mb-4 shadow-sm hover:shadow-lg transition-shadow duration-300">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-32 object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="font-semibold text-secondary group-hover:text-coral transition-colors">
-                  {product.name}
-                </h3>
-              </div>
+              <ProductCard key={`second-${index}`} product={product} />
             ))}
           </div>
         </div>
