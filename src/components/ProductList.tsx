@@ -24,7 +24,7 @@ const products = [
 
 const ProductCard = ({ product }: { product: { name: string; image: string } }) => {
   return (
-    <article className="flex-shrink-0 w-44 text-center cursor-pointer">
+    <article className="text-center cursor-pointer">
       <div className="bg-white rounded-2xl p-6 mb-4 shadow-sm hover:shadow-lg transition-shadow duration-300">
         <img
           src={product.image}
@@ -50,16 +50,11 @@ const ProductList = () => {
           The latest. Take a look at what's new right now.
         </p>
 
-        {/* Product Grid */}
-        <div className="overflow-hidden">
-          <div className="flex gap-8 marquee">
-            {products.map((product, index) => (
-              <ProductCard key={`first-${index}`} product={product} />
-            ))}
-            {products.map((product, index) => (
-              <ProductCard key={`second-${index}`} product={product} />
-            ))}
-          </div>
+        {/* Product Grid - 5 columns, 2 rows */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          {products.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
         </div>
       </div>
     </section>
