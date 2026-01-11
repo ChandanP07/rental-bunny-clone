@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import appleImg from '@/assets/brands/apple.png';
 import dellImg from '@/assets/brands/dell.png';
 import hpImg from '@/assets/brands/hp.png';
@@ -14,7 +15,17 @@ const brands = [
   { name: 'Asus', image: asusImg },
 ];
 
+const BRANDS_PER_PAGE = 3;
+
 const BrandsSection = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = Math.ceil(brands.length / BRANDS_PER_PAGE);
+  
+  const currentBrands = brands.slice(
+    currentPage * BRANDS_PER_PAGE,
+    (currentPage + 1) * BRANDS_PER_PAGE
+  );
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
@@ -22,36 +33,36 @@ const BrandsSection = () => {
           Brands we Offer
         </h2>
 
-        {/* Marquee Container */}
-        <div className="overflow-hidden">
-          <div className="flex gap-12 marquee">
-            {/* First set of brands */}
-            {brands.map((brand, index) => (
-              <div
-                key={`first-${index}`}
-                className="flex-shrink-0 w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
-              >
-                <img
-                  src={brand.image}
-                  alt={brand.name}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ))}
-            {/* Duplicate for seamless loop */}
-            {brands.map((brand, index) => (
-              <div
-                key={`second-${index}`}
-                className="flex-shrink-0 w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
-              >
-                <img
-                  src={brand.image}
-                  alt={brand.name}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-            ))}
-          </div>
+        {/* Brands Grid */}
+        <div className="flex justify-center gap-12 mb-8">
+          {currentBrands.map((brand, index) => (
+            <div
+              key={index}
+              className="w-32 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+            >
+              <img
+                src={brand.image}
+                alt={brand.name}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Pagination Bullets */}
+        <div className="flex justify-center gap-2">
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                currentPage === index
+                  ? 'bg-primary scale-110'
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              aria-label={`Go to page ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
