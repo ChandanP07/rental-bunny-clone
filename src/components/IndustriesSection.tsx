@@ -22,25 +22,22 @@ const IndustriesSection = () => {
           <span className="text-coral">Industries</span>We Serve
         </h2>
 
-        {/* Marquee Container */}
-        <div className="overflow-hidden">
-          <div className="flex gap-12 justify-center flex-wrap md:flex-nowrap">
-            {industries.map((industry, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center gap-4 p-6 hover:scale-105 transition-transform duration-300 cursor-pointer"
-              >
-                <div className="w-20 h-20 flex items-center justify-center">
-                  <img
-                    src={industry.icon}
-                    alt={industry.name}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <span className="font-medium text-secondary text-center">{industry.name}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {industries.map((industry, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center gap-4 p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
+              <div className="w-20 h-20 flex items-center justify-center">
+                <img
+                  src={industry.icon}
+                  alt={industry.name}
+                  className="w-full h-full object-contain"
+                />
               </div>
-            ))}
-          </div>
+              <span className="font-medium text-secondary text-center">{industry.name}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
