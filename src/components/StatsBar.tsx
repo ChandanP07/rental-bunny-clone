@@ -28,7 +28,7 @@ const stats = [
 
 const StatsBar = () => {
   return (
-    <section className="bg-secondary py-8">
+    <section className="bg-secondary py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 divide-x divide-secondary-foreground/20">
           {stats.map((stat, index) => (
