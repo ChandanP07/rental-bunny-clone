@@ -43,10 +43,10 @@ const ProductList = () => {
   return (
     <section className="py-16 bg-light-gray">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
-          <span className="text-coral">Our</span>Product List
+        <h2 className="text-3xl md:text-4xl font-bold text-left mb-2 text-secondary">
+          Our Product List
         </h2>
-        <p className="text-center text-muted-foreground mb-12">
+        <p className="text-left text-muted-foreground mb-12">
           The latest. Take a look at what's new right now.
         </p>
 
