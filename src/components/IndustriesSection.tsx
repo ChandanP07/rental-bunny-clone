@@ -23,20 +23,20 @@ const IndustriesSection = () => {
         </h2>
 
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[40%]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-[50%]">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="flex flex-col items-center gap-4 p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
             >
-              <div className="w-20 h-20 flex items-center justify-center">
+              <div className="w-12 h-12 flex items-center justify-center">
                 <img
                   src={industry.icon}
                   alt={industry.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-medium text-secondary text-center">{industry.name}</span>
+              <span className="text-sm font-medium text-secondary text-center">{industry.name}</span>
             </div>
           ))}
           </div>
