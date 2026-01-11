@@ -16,13 +16,14 @@ const industries = [
 
 const IndustriesSection = () => {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-muted">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          <span className="text-coral">Industries</span>We Serve
+          <span className="text-coral">Industries</span> We Serve
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-[40%]">
           {industries.map((industry, index) => (
             <div
               key={index}
@@ -38,6 +39,7 @@ const IndustriesSection = () => {
               <span className="font-medium text-secondary text-center">{industry.name}</span>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
